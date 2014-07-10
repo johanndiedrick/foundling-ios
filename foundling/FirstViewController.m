@@ -66,7 +66,7 @@
     // Background color (use UIColor for iOS)
     // Background color (use UIColor for iOS)
     // Background color
-    self.audioPlotGL.backgroundColor = [UIColor colorWithRed: 0.0 green: 0.0 blue: 0.0 alpha: 1.0];
+    self.audioPlotGL.backgroundColor = [UIColor colorWithRed: 1.0 green: 1.0 blue: 1.0 alpha: 1.0];
     // Waveform color
     self.audioPlotGL.color           = [UIColor colorWithRed:1.0 green:0.4 blue:0.8 alpha:1.0];
     // Plot type
@@ -104,7 +104,7 @@
     //get application width and height to use as global variables
     
     //set view background color
-  //  self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor whiteColor];
    // CGRect screenRect = [[UIScreen mainScreen] bounds];
    // CGFloat screenWidth = screenRect.size.width;
    // CGFloat screenHeight = screenRect.size.height;
@@ -131,6 +131,10 @@
     [recordingTimeLabel setTextColor:[UIColor purpleColor]];
     [recordingTimeLabel setHidden:NO]; // hide recording label initially
     [self.view addSubview:recordingTimeLabel];
+    
+    _activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2) - 50/2 , (self.view.frame.size.height/2) - 50/2, 50, 50)];
+    _darkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [_darkView setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5]];
     
 }
 
@@ -220,6 +224,10 @@ withNumberOfChannels:(UInt32)numberOfChannels {
             NSLog(@"Playing back audio");
             [player play];
             //show upload icon and upload audio
+            
+            [self.view addSubview:_darkView];
+            [_activityIndicator startAnimating];
+            [_darkView addSubview:_activityIndicator];
             [audioUploader uploadAudio];
             [self sendLocation];
         }
@@ -305,6 +313,7 @@ withNumberOfChannels:(UInt32)numberOfChannels {
 -(void) setupAudioUploader{
     audioUploader = [[AudioUploader alloc] init];
     [audioUploader setSoundFilePath:soundFilePath];
+    audioUploader.delegate = self;
 }
 
 -(void) sendLocation{
@@ -378,6 +387,13 @@ withNumberOfChannels:(UInt32)numberOfChannels {
     //set up location object
     self.location = [[CLLocation alloc] init];
     
+}
+
+-(void) finishedUploading{
+    NSLog(@"finished uploading");
+    [_activityIndicator stopAnimating];
+    [_activityIndicator removeFromSuperview];
+    [_darkView removeFromSuperview];
 }
 
 @end

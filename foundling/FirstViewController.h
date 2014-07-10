@@ -16,8 +16,7 @@
 #import "EZAudio.h"
 
 @interface FirstViewController : UIViewController<EZMicrophoneDelegate, AVAudioPlayerDelegate,
-AVAudioRecorderDelegate,
-CLLocationManagerDelegate>
+AVAudioRecorderDelegate, CLLocationManagerDelegate, AudioUploaderDelegate>
 
 #pragma mark audio
 
@@ -47,6 +46,10 @@ CLLocationManagerDelegate>
 //timer for recording
 @property (strong, atomic) NSTimer* recordingTimer;
 @property (strong, atomic) NSString* recordingTime;
+
+//activity indicator
+@property (strong, nonatomic) UIActivityIndicatorView* activityIndicator;
+@property (strong, nonatomic) UIView* darkView;
 
 
 

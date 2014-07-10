@@ -56,8 +56,15 @@
         long long totalBytesWritten,
         long long totalBytesExpectedToWrite) {
                  NSLog(@"Sent %lld of %lld bytes", totalBytesWritten, totalBytesExpectedToWrite);
+             if (totalBytesWritten >= totalBytesExpectedToWrite) {
+                 [self finishedUploading];
+             }
              }];
             
             [httpClient enqueueHTTPRequestOperation:operation];
+}
+
+-(void)finishedUploading{
+    [self.delegate finishedUploading];
 }
 @end

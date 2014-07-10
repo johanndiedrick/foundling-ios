@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol AudioUploaderDelegate <NSObject>
+
+-(void)finishedUploading;
+
+@end
 @interface AudioUploader : NSObject
 {
 @private
@@ -15,6 +20,7 @@ NSString* soundFilePath;
 NSString* dateString;
 }
 
+@property (nonatomic, weak) id<AudioUploaderDelegate> delegate;
 -(void) uploadAudio;
 
 -(void) setSoundFilePath:(NSString*) _soundFilePath;
@@ -24,5 +30,7 @@ NSString* dateString;
 -(void) setDateString:(NSString*) _dateString;
 
 -(NSString*) getDateString;
+
+
 
 @end
