@@ -9,7 +9,6 @@
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
-#define FOUND_SOUND_API @"http://ec2-107-20-106-161.compute-1.amazonaws.com/sounds"
 
 
 
@@ -32,7 +31,7 @@
     mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
     self.mapView.delegate = self;
     
-    NSURL *finalURL = [[NSURL alloc] initWithString:FOUND_SOUND_API];
+    NSURL *finalURL = [[NSURL alloc] initWithString:FOUNDLING_API];
     dispatch_async(kBgQueue, ^{
         NSData* data = [NSData dataWithContentsOfURL:finalURL];
         [self performSelectorOnMainThread:@selector(plotSounds:)

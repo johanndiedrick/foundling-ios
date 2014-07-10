@@ -9,7 +9,6 @@
 
 #import "FirstViewController.h"
 
-#define FOUND_SOUND_URL @"http://ec2-107-20-106-161.compute-1.amazonaws.com/"
 
 
 @interface FirstViewController ()
@@ -330,7 +329,7 @@ withNumberOfChannels:(UInt32)numberOfChannels {
     //  NSData *jsonData = [NSJSONSerialization dataWithJSONObject:locationData options:NSJSONWritingPrettyPrinted error:&error];
     
     //  NSLog([[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]);
-    NSURL *url = [NSURL URLWithString:FOUND_SOUND_URL];
+    NSURL *url = [NSURL URLWithString:FOUNDLING_API];
     
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:url];
     

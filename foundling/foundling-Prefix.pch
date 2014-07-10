@@ -6,6 +6,8 @@
 
 #import <Availability.h>
 
+#define FOUNDLING_API @"http://ec2-107-20-106-161.compute-1.amazonaws.com/"
+
 #ifndef __IPHONE_5_0
 #warning "This project uses features only available in iOS SDK 5.0 and later."
 #endif
@@ -14,3 +16,4 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+

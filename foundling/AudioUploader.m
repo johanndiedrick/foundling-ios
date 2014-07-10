@@ -10,8 +10,6 @@
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
 
-#define WAV_UPLOAD_PATH @"http://ec2-107-20-106-161.compute-1.amazonaws.com/uploadwav"
-
 @implementation AudioUploader
 
 -(void)setSoundFilePath:(NSString*) _soundFilePath{
@@ -40,7 +38,7 @@
     //get audio data
     NSData *audioData = [NSData dataWithContentsOfFile:[self getSoundFilePath]];
     
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://ec2-107-20-106-161.compute-1.amazonaws.com/"]];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:FOUNDLING_API]];
   
     NSString* filename = [NSString stringWithFormat:@"sound_%@.wav", dateString];
     
