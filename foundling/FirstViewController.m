@@ -108,11 +108,17 @@
    // CGFloat screenWidth = screenRect.size.width;
    // CGFloat screenHeight = screenRect.size.height;
     
+    CGFloat recordButtonWidth = 300;
+    CGFloat recordButtonHeight = 50;
+    
     //setup record button
     UIButton *record = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [record setTitle:@"Record" forState:UIControlStateNormal];
+    [record setTitle:@"Hold Here To Record" forState:UIControlStateNormal];
     [record setTitleColor:[UIColor purpleColor] forState:UIControlStateNormal];
-    [record setFrame:CGRectMake(120, 300, 80, 40)]; //change from hardcoded values
+    [record setFrame:CGRectMake((self.view.frame.size.width/2)-(recordButtonWidth/2),
+                                300,
+                                recordButtonWidth,
+                                recordButtonHeight)];
     [record addTarget:self action:@selector(startRecording:) forControlEvents:UIControlEventTouchDown];
     [record addTarget:self action:@selector(stopRecording:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:record];

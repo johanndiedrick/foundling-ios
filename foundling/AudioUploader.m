@@ -45,7 +45,8 @@
     NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:@"/uploadwav" parameters:nil constructingBodyWithBlock:^(id <AFMultipartFormData>formData) {
         [formData appendPartWithFileData:audioData
                                     name:@"wav"
-                                fileName:filename mimeType:@"audio/wav"];
+                                fileName:filename
+                                mimeType:@"audio/wav"];
         }];
     
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];

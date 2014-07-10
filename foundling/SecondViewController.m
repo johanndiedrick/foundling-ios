@@ -30,15 +30,15 @@
 	// Do any additional setup after loading the view, typically from a nib.
     mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
     self.mapView.delegate = self;
-    
-    NSURL *finalURL = [[NSURL alloc] initWithString:FOUNDLING_API];
-    dispatch_async(kBgQueue, ^{
-        NSData* data = [NSData dataWithContentsOfURL:finalURL];
-        [self performSelectorOnMainThread:@selector(plotSounds:)
-                               withObject:data waitUntilDone:YES];
-    });
 
-     [self.view addSubview:self.mapView];
+    [self refreshSounds];
+    
+    [self.view addSubview:self.mapView];
+    
+    _refreshButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 20, 50, 50)];
+    [_refreshButton addTarget:self action:@selector(refreshSounds) forControlEvents:UIControlEventTouchUpInside];
+    [_refreshButton setBackgroundColor:[UIColor purpleColor]];
+    [self.view addSubview:_refreshButton];
     
 }
 
@@ -152,6 +152,22 @@
         
         
     }
+}
+
+#pragma mark - Refresh button
+
+-(void) refreshSounds{
+    NSLog(@"refreshing sounds");
+    
+    NSString* sounds_route = [NSString stringWithFormat:@"%@/sounds", FOUNDLING_API];
+    NSURL *finalURL = [[NSURL alloc] initWithString:sounds_route];
+    dispatch_async(kBgQueue, ^{
+        NSData* data = [NSData dataWithContentsOfURL:finalURL];
+        [self performSelectorOnMainThread:@selector(plotSounds:)
+                               withObject:data waitUntilDone:YES];
+    });
+    
+    
 }
 
 
