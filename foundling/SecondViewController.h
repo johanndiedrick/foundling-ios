@@ -14,7 +14,6 @@
 @interface SecondViewController : UIViewController <MKMapViewDelegate, AudioPlayerDelegate>
 
 @property (strong, nonatomic) MKMapView *mapView;
-@property (strong, atomic) NSMutableArray *audioPlayers;
 @property (strong, nonatomic) UIButton* refreshButton;
 
 //audio player
