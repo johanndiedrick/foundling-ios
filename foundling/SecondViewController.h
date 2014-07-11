@@ -9,11 +9,17 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "AudioPlayer.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface SecondViewController : UIViewController <MKMapViewDelegate, AudioPlayerDelegate>
 
 @property (strong, nonatomic) MKMapView *mapView;
 @property (strong, atomic) NSMutableArray *audioPlayers;
 @property (strong, nonatomic) UIButton* refreshButton;
+
+//audio player
+@property (strong, atomic) AVAudioSession *audioSession;
+@property (strong, nonatomic) AVPlayer* audioPlayer;
+@property (strong, nonatomic) UIActivityIndicatorView* activityIndicator;
 
 @end

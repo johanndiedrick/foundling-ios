@@ -124,15 +124,28 @@
     [self.view addSubview:record];
     
     //setup start recording label
-    recordingLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
+    CGFloat recordingLabelWidth = 100;
+    CGFloat recordingLabelHeight = 100;
+    
+    recordingLabel = [[UILabel alloc]initWithFrame:CGRectMake(
+                                                              (self.view.frame.size.width/2) - (recordingLabelWidth/2),
+                                                               (self.view.frame.size.height/2) - (recordButtonHeight/2),
+                                                              recordingLabelWidth,
+                                                              recordingLabelHeight)];
+    recordingLabel.textAlignment = NSTextAlignmentCenter;
     [recordingLabel setText:@"Recording"];
     [recordingLabel setTextColor:[UIColor purpleColor]];
     [recordingLabel setHidden:YES]; // hide recording label initially
     [self.view addSubview:recordingLabel];
     
     //setup recoring time label
-    recordingTimeLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 100, 100)];
-    [recordingTimeLabel setText:@"---"];
+    CGFloat recordingTimeLabelWidth = 100;
+    CGFloat recordingTimeLabelHeight = 100;
+    recordingTimeLabel = [[UILabel alloc]initWithFrame:CGRectMake((self.view.frame.size.width/2) - recordingTimeLabelWidth/4 ,
+                                                                  100,
+                                                                  recordingTimeLabelWidth,
+                                                                  recordingTimeLabelHeight)];
+    //[recordingTimeLabel setText:@"---"];
     [recordingTimeLabel setTextColor:[UIColor purpleColor]];
     [recordingTimeLabel setHidden:NO]; // hide recording label initially
     [self.view addSubview:recordingTimeLabel];
@@ -196,8 +209,8 @@ withNumberOfChannels:(UInt32)numberOfChannels {
         float minutes = floor(recorder.currentTime/60);
         float seconds = recorder.currentTime - (minutes * 60);
         
-        recordingTime =   [[NSString alloc] initWithFormat:@"%0.0f.%0.0f",
-                           minutes, seconds];
+        recordingTime =   [[NSString alloc] initWithFormat:@"%0.0f seconds",
+                           seconds];
         
         NSLog(recordingTime);
         
@@ -360,6 +373,7 @@ withNumberOfChannels:(UInt32)numberOfChannels {
 
 -(void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
     //
+    NSLog(@"finished playback");
 }
 
 -(void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError *)error{

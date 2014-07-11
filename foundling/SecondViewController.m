@@ -9,9 +9,6 @@
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
-
-
-
 #import "SecondViewController.h"
 #import "MySound.h"
 #define METERS_PER_MILE 1609.344
@@ -39,6 +36,23 @@
     [_refreshButton addTarget:self action:@selector(refreshSounds) forControlEvents:UIControlEventTouchUpInside];
     [_refreshButton setBackgroundColor:[UIColor purpleColor]];
     [self.view addSubview:_refreshButton];
+    
+    //setup audio player
+    _audioPlayer = [[AVPlayer alloc] init];
+    
+    //setup audio session
+    _audioSession = [AVAudioSession sharedInstance];
+    [_audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [_audioSession setActive:YES error:nil];
+    
+    //setup activity indicator
+    CGFloat activityIndicatorWidth = 150;
+    CGFloat activityIndicatorHeight = 150;
+    _activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - activityIndicatorWidth/2, self.view.frame.size.height/2 - activityIndicatorHeight/2, activityIndicatorWidth, activityIndicatorHeight)];
+    [_activityIndicator setBackgroundColor:[UIColor grayColor]];
+    _activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+
+    
     
 }
 
@@ -93,17 +107,7 @@
         coordinate.longitude = longitude.doubleValue;
         MySound *annotation = [[MySound alloc] initWithName:name sound_url:sound_url coordinate:coordinate] ;
         [self.mapView addAnnotation:annotation];
-        
-        //create an audio player for that annotation and add it to our array
-        NSURL *audioURL = [NSURL URLWithString:sound_url];
-        AudioPlayer *audioPlayer = [[AudioPlayer alloc] init];
-        [audioPlayer setAudioURL:audioURL];
-        [self.audioPlayers addObject:audioPlayer];
-        
 	}
-    
-    
-    
 }
 
 /*
@@ -129,30 +133,60 @@
  */
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-    //play audio
-    for (int i=0; i<[self.audioPlayers count]; i++) {
+    if ([_audioPlayer rate] != 0.0){ // if its playing
+
+        [_audioPlayer pause]; //stop avplayer
         
-        //pause all audio first
+        [_audioPlayer removeObserver:self forKeyPath:@"status"]; //clear status observer
         
-        if ([[self.audioPlayers[i] getAudioURL] absoluteString] != [view.annotation subtitle]) {
-            //if([self.audioPlayers[i] state] == AudioPlayerStatePlaying){
-                [self.audioPlayers[i] pause];
-                //NSLog(@"Pausing audio");
-                
-                //[self.audioPlayers[i] pause];
-           // }
+        _audioPlayer = nil; //clear audio player
+    }
+
+    
+    //get url from annotation
+    NSLog(@"url for sound: %@", [view.annotation subtitle]);
+    
+    AVPlayer* player = [[AVPlayer alloc]
+                             initWithURL:[NSURL URLWithString:[view.annotation subtitle]]];
+    
+    _audioPlayer = player;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playerItemDidReachEnd:)
+                                                 name:AVPlayerItemDidPlayToEndTimeNotification
+                                               object:[_audioPlayer currentItem]];
+    [_audioPlayer addObserver:self forKeyPath:@"status" options:0 context:nil];
+    
+    [_activityIndicator startAnimating];
+    [self.view addSubview:_activityIndicator];
+     }
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    
+    if (object == _audioPlayer && [keyPath isEqualToString:@"status"]) {
+        if (_audioPlayer.status == AVPlayerStatusFailed) {
+            NSLog(@"AVPlayer Failed");
+            
+        } else if (_audioPlayer.status == AVPlayerStatusReadyToPlay) {
+            NSLog(@"AVPlayerStatusReadyToPlay");
+            [_audioPlayer play];
+            [_activityIndicator stopAnimating];
+            [_activityIndicator removeFromSuperview];
+            
+            
+        } else if (_audioPlayer.status == AVPlayerItemStatusUnknown) {
+            NSLog(@"AVPlayer Unknown");
+            
         }
-        
-        
-        //check to see find the audio player with the matching sound url
-        if ([[[self.audioPlayers[i] getAudioURL] absoluteString] isEqual:[view.annotation subtitle]]) {
-            NSLog(@"toggling audio %@", [view.annotation subtitle]);
-            [self.audioPlayers[i] toggleAudio];
-        }
-        
         
     }
 }
+
+- (void)playerItemDidReachEnd:(NSNotification *)notification {
+    NSLog(@"audio did end");
+    [_audioPlayer removeObserver:self forKeyPath:@"status"];
+}
+
+
 
 #pragma mark - Refresh button
 
