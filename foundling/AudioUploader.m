@@ -42,28 +42,46 @@
   
     NSString* filename = [NSString stringWithFormat:@"sound_%@.wav", dateString];
     
-    NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:@"/uploadwav" parameters:nil constructingBodyWithBlock:^(id <AFMultipartFormData>formData) {
+    NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST"
+                                                                         path:@"/uploadwav" parameters:nil constructingBodyWithBlock:^(id <AFMultipartFormData>formData) {
         [formData appendPartWithFileData:audioData
                                     name:@"wav"
                                 fileName:filename
                                 mimeType:@"audio/wav"];
         }];
     
-        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
 
-         [operation setUploadProgressBlock:^(NSUInteger bytesWritten,
-        long long totalBytesWritten,
-        long long totalBytesExpectedToWrite) {
-                 NSLog(@"Sent %lld of %lld bytes", totalBytesWritten, totalBytesExpectedToWrite);
-             if (totalBytesWritten >= totalBytesExpectedToWrite) {
-                 [self finishedUploading];
-             }
-             }];
-            
-            [httpClient enqueueHTTPRequestOperation:operation];
+    [operation setUploadProgressBlock:^(NSUInteger bytesWritten,
+                                        long long totalBytesWritten,
+                                        long long totalBytesExpectedToWrite) {
+        
+                                        NSLog(@"Sent %lld of %lld bytes | %f",
+                                              totalBytesWritten,
+                                              totalBytesExpectedToWrite,
+                                              ((float)totalBytesWritten/(float)totalBytesExpectedToWrite) * 100);
+        
+                                        [self updateProgressView: ((float)totalBytesWritten/(float)totalBytesExpectedToWrite)];
+        
+                                        //write to screen something like
+                                        // "uploading foundling! please wait :) x% uploaded!"
+                     
+                                        if (totalBytesWritten >= totalBytesExpectedToWrite) {
+                                            [self finishedUploading];
+                                        }
+        
+                                        }];
+    [httpClient enqueueHTTPRequestOperation:operation];
 }
 
 -(void)finishedUploading{
     [self.delegate finishedUploading];
 }
+
+-(void)updateProgressView:(CGFloat)currentPercentage{
+    [self.delegate updateProgressView:currentPercentage];
+}
+
+
+
 @end

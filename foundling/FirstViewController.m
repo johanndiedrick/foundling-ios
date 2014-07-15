@@ -154,6 +154,19 @@
     _darkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [_darkView setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5]];
     
+    //setup progressview
+    _progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+    [_progressView setFrame:CGRectMake(0, self.view.frame.size.width/2, self.view.frame.size.width, self.view.frame.size.height)];
+    
+    _progressViewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
+    [_progressViewLabel setTextColor:[UIColor purpleColor]];
+    [_progressViewLabel setAdjustsFontSizeToFitWidth:NO];
+    [_progressViewLabel setNumberOfLines:0];
+    [_progressViewLabel setTextAlignment:NSTextAlignmentCenter];
+    
+    [_progressViewLabel setText:@"uploading foundling! please wait :)"];
+    [_progressView addSubview:_progressViewLabel];
+    
 }
 
 
@@ -244,8 +257,9 @@ withNumberOfChannels:(UInt32)numberOfChannels {
             //show upload icon and upload audio
             
             [self.view addSubview:_darkView];
-            [_activityIndicator startAnimating];
-            [_darkView addSubview:_activityIndicator];
+            //[_activityIndicator startAnimating];
+            //[_darkView addSubview:_activityIndicator];
+            [_darkView addSubview:_progressView];
             [audioUploader uploadAudio];
             [self sendLocation];
         }
@@ -408,10 +422,17 @@ withNumberOfChannels:(UInt32)numberOfChannels {
     
 }
 
+-(void)updateProgressView:(CGFloat)currentPercentage{
+    _progressView.progress = currentPercentage;
+    NSString* updatedProgressString = [NSString stringWithFormat:@"uploading foundling! please wait :) \n \n %.0f%% uploaded!", currentPercentage*100];
+     [_progressViewLabel setText:updatedProgressString];
+}
+
 -(void) finishedUploading{
     NSLog(@"finished uploading");
-    [_activityIndicator stopAnimating];
-    [_activityIndicator removeFromSuperview];
+    //[_activityIndicator stopAnimating];
+    //[_activityIndicator removeFromSuperview];
+    [_progressView removeFromSuperview];
     [_darkView removeFromSuperview];
 }
 

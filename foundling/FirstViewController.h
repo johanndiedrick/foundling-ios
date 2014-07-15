@@ -51,6 +51,10 @@ AVAudioRecorderDelegate, CLLocationManagerDelegate, AudioUploaderDelegate>
 @property (strong, nonatomic) UIActivityIndicatorView* activityIndicator;
 @property (strong, nonatomic) UIView* darkView;
 
+//progress view
+@property (strong, nonatomic) UIProgressView* progressView;
+@property (strong, nonatomic) UILabel* progressViewLabel;
+
 
 
 #pragma mark - Components

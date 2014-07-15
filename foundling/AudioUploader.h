@@ -11,6 +11,7 @@
 @protocol AudioUploaderDelegate <NSObject>
 
 -(void)finishedUploading;
+-(void)updateProgressView:(CGFloat)currentPercentage;
 
 @end
 @interface AudioUploader : NSObject
@@ -30,6 +31,7 @@ NSString* dateString;
 -(void) setDateString:(NSString*) _dateString;
 
 -(NSString*) getDateString;
+
 
 
 

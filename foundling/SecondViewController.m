@@ -77,7 +77,7 @@
 }
 
 -(void)plotSounds:(NSData *)responseData{
-    self.audioPlayers = [[NSMutableArray alloc] initWithCapacity:0];
+  //  self.audioPlayers = [[NSMutableArray alloc] initWithCapacity:0];
     
     
     //remove all annotations currently on the map
