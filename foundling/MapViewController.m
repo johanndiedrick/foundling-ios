@@ -1,5 +1,5 @@
 //
-//  SecondViewController.m
+//  MapViewController.m
 //  ezsoundgltest
 //
 //  Created by Johann Diedrick on 1/29/14.
@@ -9,15 +9,15 @@
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
-#import "SecondViewController.h"
+#import "MapViewController.h"
 #import "MySound.h"
 #define METERS_PER_MILE 1609.344
 
-@interface SecondViewController ()
+@interface MapViewController ()
 
 @end
 
-@implementation SecondViewController
+@implementation MapViewController
 
 @synthesize mapView;
 

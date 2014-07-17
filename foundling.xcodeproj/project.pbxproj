@@ -11,11 +11,11 @@
 		8E0057F0196D8CDF0041E3C6 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E0057E1196D8CDF0041E3C6 /* Main_iPad.storyboard */; };
 		8E0057F1196D8CDF0041E3C6 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E0057E3196D8CDF0041E3C6 /* Main_iPhone.storyboard */; };
 		8E0057F2196D8CDF0041E3C6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8E0057E5196D8CDF0041E3C6 /* InfoPlist.strings */; };
-		8E0057F3196D8CDF0041E3C6 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0057E8196D8CDF0041E3C6 /* FirstViewController.m */; };
+		8E0057F3196D8CDF0041E3C6 /* RecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0057E8196D8CDF0041E3C6 /* RecorderViewController.m */; };
 		8E0057F4196D8CDF0041E3C6 /* foundling-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E0057E9196D8CDF0041E3C6 /* foundling-Info.plist */; };
 		8E0057F5196D8CDF0041E3C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E0057EB196D8CDF0041E3C6 /* Images.xcassets */; };
 		8E0057F6196D8CDF0041E3C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0057EC196D8CDF0041E3C6 /* main.m */; };
-		8E0057F7196D8CDF0041E3C6 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0057EE196D8CDF0041E3C6 /* SecondViewController.m */; };
+		8E0057F7196D8CDF0041E3C6 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0057EE196D8CDF0041E3C6 /* MapViewController.m */; };
 		8E0E245A196D90AA00A98385 /* AudioUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0E2459196D90AA00A98385 /* AudioUploader.m */; };
 		8E0E246A196D90E700A98385 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0E245D196D90E700A98385 /* AudioPlayer.m */; };
 		8E0E246B196D90E700A98385 /* AutoRecoveringHttpDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0E245F196D90E700A98385 /* AutoRecoveringHttpDataSource.m */; };
@@ -73,14 +73,14 @@
 		8E0057E2196D8CDF0041E3C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		8E0057E4196D8CDF0041E3C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		8E0057E6196D8CDF0041E3C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8E0057E7196D8CDF0041E3C6 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		8E0057E8196D8CDF0041E3C6 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		8E0057E7196D8CDF0041E3C6 /* RecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecorderViewController.h; sourceTree = "<group>"; };
+		8E0057E8196D8CDF0041E3C6 /* RecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecorderViewController.m; sourceTree = "<group>"; };
 		8E0057E9196D8CDF0041E3C6 /* foundling-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "foundling-Info.plist"; sourceTree = "<group>"; };
 		8E0057EA196D8CDF0041E3C6 /* foundling-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "foundling-Prefix.pch"; sourceTree = "<group>"; };
 		8E0057EB196D8CDF0041E3C6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8E0057EC196D8CDF0041E3C6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8E0057ED196D8CDF0041E3C6 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		8E0057EE196D8CDF0041E3C6 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		8E0057ED196D8CDF0041E3C6 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		8E0057EE196D8CDF0041E3C6 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		8E0E2458196D90AA00A98385 /* AudioUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioUploader.h; sourceTree = "<group>"; };
 		8E0E2459196D90AA00A98385 /* AudioUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioUploader.m; sourceTree = "<group>"; };
 		8E0E245C196D90E700A98385 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
@@ -185,14 +185,14 @@
 				8E0057E1196D8CDF0041E3C6 /* Main_iPad.storyboard */,
 				8E0057E3196D8CDF0041E3C6 /* Main_iPhone.storyboard */,
 				8E0057E5196D8CDF0041E3C6 /* InfoPlist.strings */,
-				8E0057E7196D8CDF0041E3C6 /* FirstViewController.h */,
-				8E0057E8196D8CDF0041E3C6 /* FirstViewController.m */,
+				8E0057E7196D8CDF0041E3C6 /* RecorderViewController.h */,
+				8E0057E8196D8CDF0041E3C6 /* RecorderViewController.m */,
 				8E0057E9196D8CDF0041E3C6 /* foundling-Info.plist */,
 				8E0057EA196D8CDF0041E3C6 /* foundling-Prefix.pch */,
 				8E0057EB196D8CDF0041E3C6 /* Images.xcassets */,
 				8E0057EC196D8CDF0041E3C6 /* main.m */,
-				8E0057ED196D8CDF0041E3C6 /* SecondViewController.h */,
-				8E0057EE196D8CDF0041E3C6 /* SecondViewController.m */,
+				8E0057ED196D8CDF0041E3C6 /* MapViewController.h */,
+				8E0057EE196D8CDF0041E3C6 /* MapViewController.m */,
 			);
 			path = foundling;
 			sourceTree = "<group>";
@@ -446,11 +446,11 @@
 				8E0E246E196D90E700A98385 /* DataSourceWrapper.m in Sources */,
 				8E0E246B196D90E700A98385 /* AutoRecoveringHttpDataSource.m in Sources */,
 				8EEC6EC0196D8F4E0091A7A0 /* EZAudioFile.m in Sources */,
-				8E0057F7196D8CDF0041E3C6 /* SecondViewController.m in Sources */,
+				8E0057F7196D8CDF0041E3C6 /* MapViewController.m in Sources */,
 				8E0E245A196D90AA00A98385 /* AudioUploader.m in Sources */,
 				8EEC6EC2196D8F4E0091A7A0 /* EZAudioPlotGL.m in Sources */,
 				8EEC6EBF196D8F4E0091A7A0 /* EZAudio.m in Sources */,
-				8E0057F3196D8CDF0041E3C6 /* FirstViewController.m in Sources */,
+				8E0057F3196D8CDF0041E3C6 /* RecorderViewController.m in Sources */,
 				8EEC6EC7196D8F4E0091A7A0 /* EZRecorder.m in Sources */,
 				8E0057EF196D8CDF0041E3C6 /* AppDelegate.m in Sources */,
 				8E0E2470196D90E700A98385 /* LocalFileDataSource.m in Sources */,
@@ -589,6 +589,7 @@
 				GCC_PREFIX_HEADER = "foundling/foundling-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/foundling/foundling-Info.plist";
 				PRODUCT_NAME = foundling;
+				PROVISIONING_PROFILE = "CCBFD78A-0501-4A0C-B323-52ABE1B9AA55";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -603,6 +604,7 @@
 				GCC_PREFIX_HEADER = "foundling/foundling-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/foundling/foundling-Info.plist";
 				PRODUCT_NAME = foundling;
+				PROVISIONING_PROFILE = "CCBFD78A-0501-4A0C-B323-52ABE1B9AA55";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

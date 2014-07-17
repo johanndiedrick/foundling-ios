@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  MapViewController.h
 //  ezsoundgltest
 //
 //  Created by Johann Diedrick on 1/29/14.
@@ -11,7 +11,7 @@
 #import "AudioPlayer.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface SecondViewController : UIViewController <MKMapViewDelegate, AudioPlayerDelegate>
+@interface MapViewController : UIViewController <MKMapViewDelegate, AudioPlayerDelegate>
 
 @property (strong, nonatomic) MKMapView *mapView;
 @property (strong, nonatomic) UIButton* refreshButton;

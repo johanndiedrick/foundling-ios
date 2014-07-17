@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  RecorderViewController.h
 //  ezsoundgltest
 //
 //  Created by Johann Diedrick on 1/29/14.
@@ -15,7 +15,7 @@
 #import "AFJSONRequestOperation.h"
 #import "EZAudio.h"
 
-@interface FirstViewController : UIViewController<EZMicrophoneDelegate, AVAudioPlayerDelegate,
+@interface RecorderViewController : UIViewController<EZMicrophoneDelegate, AVAudioPlayerDelegate,
 AVAudioRecorderDelegate, CLLocationManagerDelegate, AudioUploaderDelegate>
 
 #pragma mark audio

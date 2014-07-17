@@ -1,5 +1,5 @@
 //
-//  FirstViewController.m
+//  RecorderViewController.m
 //  ezsoundgltest
 //
 //  Created by Johann Diedrick on 1/29/14.
@@ -7,15 +7,15 @@
 //
 
 
-#import "FirstViewController.h"
+#import "RecorderViewController.h"
 
 
 
-@interface FirstViewController ()
+@interface RecorderViewController ()
 
 @end
 
-@implementation FirstViewController
+@implementation RecorderViewController
 
 @synthesize audioSession;
 @synthesize recorder, player;
